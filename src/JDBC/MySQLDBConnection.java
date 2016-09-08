@@ -9,20 +9,13 @@ import java.sql.Statement;
 
 public class MySQLDBConnection implements DBConnection {
 
-    String host = "root";
-    String port = "3306";
-    String db = "lista_estudiantes";
-    String table = "notas";
-    String user = "root";
-    String pass = "root";
-    String url = "jdbc:mysql://" + host + ":" + port + "/" + db + "?user="
-            + user + "&password=" + pass;
-    Connection con;
-    Statement stmnt;
-    ResultSet rs;
-
+    Connection coneccion;
+    Statement statement;
+    ResultSet resultSet;
+    
     public Connection conectar() throws SQLException {
-        return DriverManager.getConnection(url);
+        return DriverManager.getConnection("jdbc:mysql://localhost:+3306/lista_estudiante?"
+                                           + "useSSL=false&user=root&password=root");
     }
 
     @Override
@@ -34,6 +27,4 @@ public class MySQLDBConnection implements DBConnection {
             }
         }
     }
-
-
 }

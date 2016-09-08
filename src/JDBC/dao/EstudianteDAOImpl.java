@@ -1,6 +1,9 @@
-package JDBC;
+package JDBC.dao;
 
 
+import Entidades.Estudiante;
+import JDBC.DBConnection;
+import JDBC.dao.EstudianteDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,22 +52,21 @@ public class EstudianteDAOImpl implements EstudianteDAO {
     @Override
     public List<Estudiante> extraerTodos() {
         Connection con = null;
-        Statement stmnt = null;
-        ResultSet rs = null;
-        String sql = "SELECT * FROM notas";
+        Statement statement = null;
+        ResultSet resultSet = null;
         List<Estudiante> lista = new ArrayList<>();    
         
         try {
             con = dbcon.conectar();
-            stmnt = con.createStatement();
-            rs = stmnt.executeQuery(sql);
+            statement = con.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM notas");
             
-            while (rs.next()) {
+            while (resultSet.next()) {
             lista.add(new Estudiante(
-                    rs.getInt("id"),
-                    rs.getString("nombre"),
-                    rs.getString("matricula"),
-                    rs.getInt("nota")
+                    resultSet.getInt("id"),
+                    resultSet.getString("nombre"),
+                    resultSet.getString("matricula"),
+                    resultSet.getInt("nota")
             ));
         }
             

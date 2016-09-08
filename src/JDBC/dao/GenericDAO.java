@@ -1,4 +1,4 @@
-package JDBC;
+package JDBC.dao;
 
 
 import java.util.List;

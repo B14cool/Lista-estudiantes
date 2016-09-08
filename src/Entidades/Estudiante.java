@@ -1,4 +1,4 @@
-package JDBC;
+package Entidades;
 
 
 public class Estudiante {
@@ -48,7 +48,5 @@ public class Estudiante {
     public void setNota(int nota) {
         this.nota = nota;
     }
-    
-    
-    
+   
 }
